@@ -15,11 +15,14 @@ class App extends React.Component{
               <div style={{"marginTop": "2%"}}>
                 <BrowserRouter>
                   <Nav/>
-                  {routes.map(({path, component}, index) => {
-                    return <Route key={"route-"+index} component={component} path={path} exact/>;
-                  })}
-                  <Switch>
+									<div style={{"marginTop": "2%"}}>
+									<Switch >
+										{routes.map(({path, component}, index) => {
+											return <Route key={"route-"+index} component={component} path={path} exact/>;
+										})}
                   </Switch>
+									</div>
+                  
                 </BrowserRouter>
               </div>
             </React.StrictMode>

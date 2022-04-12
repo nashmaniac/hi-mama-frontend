@@ -28,10 +28,11 @@ class Login extends React.Component{
         authenticationService.login(data)
             .then(
                 (response) => {
-                    localStorage.setItem("token", response.data.access);
+                    localStorage.setItem("token", response.data.token);
                     this.props.history.push("/");
                 },
                 (err) =>{
+										Notifications.error("something went wrong");
                     this.setState({
                         username: "",
                         password: ""

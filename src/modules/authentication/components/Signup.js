@@ -9,7 +9,6 @@ class Signup extends Component {
 		this.state = {
 			username: "",
 			password: "",
-			name: "",
 			confirmPassword: ""
 		};
 	}
@@ -23,12 +22,6 @@ class Signup extends Component {
 	onPasswordChange = (event) => {
 		this.setState({
 			...this.state, password: event.target.value
-		});
-	}
-
-	onNameChange = (event) => {
-		this.setState({
-			...this.state, name: event.target.value
 		});
 	}
 
@@ -46,14 +39,6 @@ class Signup extends Component {
 				data: null
 			};
 		}
-		if(!this.state.name) {
-			Notifications.error("Name is required");
-			return {
-				status: false,
-				data: null
-			};
-		}
-		
 		if(!this.state.password) {
 			Notifications.error("Password is required");
 			return {
@@ -82,7 +67,6 @@ class Signup extends Component {
 			status: true,
 			data: {
 				username: this.state.username,
-				name: this.state.name,
 				password: this.state.password
 			}
 		};
@@ -115,9 +99,6 @@ class Signup extends Component {
 		return (
 			<form onSubmit={this.onFormSubmit}>
 				<div className={"col-6 offset-3 row"}>
-					<div className={"col-12 form-group"}>
-						<input value={this.state.name} onChange={this.onNameChange} type={"text"} className={"form-control"} placeholder={"Name"}/>
-					</div>
 					<div className={"col-12 form-group"}>
 						<input value={this.state.username} onChange={this.onUsernameChange} type={"text"} className={"form-control"} placeholder={"Username"}/>
 					</div>
