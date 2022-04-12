@@ -19,6 +19,9 @@ class Nav extends React.Component {
 			this.setState({
 				user: null,
 			});
+			if (this.props.location.pathname !== "/auth/login" && this.props.location.pathname !== "/auth/signup") {
+				this.props.history.push("/auth/login");
+			}
 		}
 	};
 
@@ -28,7 +31,7 @@ class Nav extends React.Component {
 				this.setState({
 					user: response.data,
 				});
-				if (this.props.location.pathname === "/auth/login") {
+				if (this.props.location.pathname === "/auth/login"  && this.props.location.pathname !== "/auth/signup") {
 					this.props.history.push("/");
 				}
 			},
