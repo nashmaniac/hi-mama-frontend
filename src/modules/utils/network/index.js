@@ -2,7 +2,8 @@ import axios from 'axios';
 
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL
+    // baseURL: process.env.REACT_APP_API_URL
+		baseURL: "https://secure-dawn-73962.herokuapp.com"
 });
 
 api.interceptors.request.use(function (config) {
