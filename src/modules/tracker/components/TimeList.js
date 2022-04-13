@@ -1,29 +1,7 @@
 import React from "react";
-import trackerService from "../services";
 import TimeItem from "./TimeItem";
 
 class TimeList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			timeList: [],
-		};
-	}
-
-	componentDidMount = () => {
-		this.getTimeList();
-	}
-
-	getTimeList = () => {
-		this.setState({...this.state, timeList:[]});
-		trackerService.getEntries()
-		.then(
-			(response) => {
-				this.setState({...this.state, timeList: response.data});
-			}
-		)
-	}
-
 	render() {
 		return (
 			<div style={{ marginTop: "2%" }}>
@@ -37,7 +15,7 @@ class TimeList extends React.Component {
 					</thead>
 
 					<tbody>
-						{this.state.timeList.map((entry, index) => {
+						{this.props.entries.map((entry, index) => {
 							return <TimeItem dataUpdated={this.getTimeList} entry={entry} key={"time-item-" + index} />;
 						})}
 					</tbody>

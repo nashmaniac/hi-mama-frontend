@@ -21,7 +21,7 @@ class CheckinCheckout extends React.Component {
 				this.getOngoingTime();
 			},
 			(err) => {
-				Notifications.error("something went wrong");
+				Notifications.error(err.response.data.message);
 			}
 		)
 	}
@@ -36,7 +36,7 @@ class CheckinCheckout extends React.Component {
 				this.getOngoingTime();
 			},
 			(err) => {
-				Notifications.error("something went wrong");
+				Notifications.error(err.response.data.message);
 			}
 		)
 	}

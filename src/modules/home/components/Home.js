@@ -1,28 +1,33 @@
 import React from 'react';
 import CheckinCheckout from '../../tracker/components/Checkin-Checkout';
 import TimeList from '../../tracker/components/TimeList';
+import trackerService from '../../tracker/services';
 
 
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			dataChanged: false,
+			timeList: []
 		}
 	}
 
 	onDataChanged = () => {
-		console.log('setting')
-		this.setState({
-			...this.state, dataChanged:true,
-		})
+		console.log('parent data is changed');
+		this.getTimeList();
+	}
+	componentDidMount = () => {
+		this.getTimeList();
 	}
 
-	resetDataChanged = () => {
-		console.log('reseting')
-		this.setState({
-			...this.state, dataChanged:false,
-		})
+	getTimeList = () => {
+		this.setState({...this.state, timeList:[]});
+		trackerService.getEntries()
+		.then(
+			(response) => {
+				this.setState({...this.state, timeList: response.data});
+			}
+		)
 	}
 
   render() {
@@ -32,7 +37,7 @@ class Home extends React.Component {
 					<CheckinCheckout onDataChanged={this.onDataChanged}/>
 				</div>
 				<div className="col-12" style={{"marginTop": "1%"}}>
-					<TimeList dataChanged={this.state.dataChanged} resetDataChanged={this.resetDataChanged}/>
+					<TimeList entries={this.state.timeList}/>
 				</div>
 			</div>
 		)
