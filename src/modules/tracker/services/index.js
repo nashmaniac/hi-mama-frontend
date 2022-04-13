@@ -12,6 +12,9 @@ const trackerService = {
 		},
 		getEntries: function() {
 			return api.get("/v1/entries");
+		},
+		editEntry: function(id, data) {
+			return api.put("/v1/entries/"+id, data)
 		}
 }
 

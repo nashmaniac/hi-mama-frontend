@@ -5,6 +5,9 @@ import NotificationContainer from 'react-notifications/lib/NotificationContainer
 import Nav from './modules/common/components/Nav';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import routes from './routes';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 
 class App extends React.Component{
     render() {
