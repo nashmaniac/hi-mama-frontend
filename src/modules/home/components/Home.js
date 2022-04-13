@@ -1,21 +1,38 @@
 import React from 'react';
-import CheckinCheckout from '../../tracker/Checkin-Checkout';
-import TimeList from '../../tracker/TimeList';
-import Timer from '../../tracker/Timer';
+import CheckinCheckout from '../../tracker/components/Checkin-Checkout';
+import TimeList from '../../tracker/components/TimeList';
 
 
 class Home extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			dataChanged: false,
+		}
+	}
+
+	onDataChanged = () => {
+		console.log('setting')
+		this.setState({
+			...this.state, dataChanged:true,
+		})
+	}
+
+	resetDataChanged = () => {
+		console.log('reseting')
+		this.setState({
+			...this.state, dataChanged:false,
+		})
+	}
+
   render() {
 		return(
 			<div className={"row"} align="center">
 				<div className="col-12" style={{"marginTop": "1%"}}>
-					<Timer/>
+					<CheckinCheckout onDataChanged={this.onDataChanged}/>
 				</div>
 				<div className="col-12" style={{"marginTop": "1%"}}>
-					<CheckinCheckout/>
-				</div>
-				<div className="col-12" style={{"marginTop": "1%"}}>
-					<TimeList/>
+					<TimeList dataChanged={this.state.dataChanged} resetDataChanged={this.resetDataChanged}/>
 				</div>
 			</div>
 		)

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "moment": "^2.29.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-notifications": "^1.7.2",
@@ -17,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-		"dev:start": "REACT_APP_API_URL=http://localhost:8080 react-scripts start",
+    "dev:start": "REACT_APP_API_URL=http://localhost:8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
